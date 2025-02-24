@@ -1,0 +1,30 @@
+{
+  "website": {
+    "name": "Example Site",
+    "url": "https://example.com",
+    "actions": {
+      "login": {
+        "method": "POST",
+        "endpoint": "/api/auth",
+        "params": ["username", "password"]
+      },
+      "buy_product": {
+        "method": "POST",
+        "endpoint": "/api/checkout",
+        "params": ["product_id", "quantity"]
+      }
+    }
+  },
+  "crypto_payments": {
+    "enabled": true,
+    "supported_chains": ["Ethereum", "Solana", "Polygon"],
+    "addresses": {
+      "ETH": "0x123...",
+      "SOL": "SolanaAddress..."
+    },
+    "payment_methods": {
+      "onchain": true,
+      "offchain": false
+    }
+  }
+}
