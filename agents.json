@@ -1,17 +1,42 @@
 {
   "website": {
-    "name": "Example Site",
-    "url": "https://example.com",
-    "actions": {
+    "name": "Example Store",
+    "url": "https://examplestore.com",
+    "description": "An e-commerce site for AI-driven shopping."
+  },
+  "actions": {
+    "api": {
       "login": {
         "method": "POST",
         "endpoint": "/api/auth",
         "params": ["username", "password"]
       },
-      "buy_product": {
+      "checkout": {
         "method": "POST",
         "endpoint": "/api/checkout",
-        "params": ["product_id", "quantity"]
+        "params": ["product_id", "quantity", "payment_method"]
+      }
+    },
+    "ui": {
+      "login": {
+        "type": "form",
+        "selectors": {
+          "username": "#username_input",
+          "password": "#password_input",
+          "submit": "#login_button"
+        }
+      },
+      "navigate_to_cart": {
+        "type": "click",
+        "selector": "#cart_icon"
+      },
+      "purchase": {
+        "type": "form",
+        "selectors": {
+          "product_id": "#product_id",
+          "quantity": "#quantity_input",
+          "submit": "#checkout_button"
+        }
       }
     }
   },
@@ -26,5 +51,18 @@
       "onchain": true,
       "offchain": false
     }
+  },
+  "authentication": {
+    "methods": ["email_password", "wallet_connect"],
+    "captcha": {
+      "type": "recaptcha",
+      "selector": "#recaptcha"
+    }
+  },
+  "navigation": {
+    "home": "/",
+    "shop": "/shop",
+    "cart": "/cart",
+    "checkout": "/checkout"
   }
 }
