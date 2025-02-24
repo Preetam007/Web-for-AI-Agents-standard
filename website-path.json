@@ -1,8 +1,8 @@
 {
   "website": {
-    "name": "Example Store",
-    "url": "https://examplestore.com",
-    "description": "An AI-accessible e-commerce site"
+    "name": "QuillCheck",
+    "url": "https://check.quillai.network/",
+    "description": "A token diligence tool"
   },
   "actions": {
     "api": {
