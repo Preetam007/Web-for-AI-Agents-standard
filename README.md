@@ -1,0 +1,1 @@
+# Web-for-Agents-standard
