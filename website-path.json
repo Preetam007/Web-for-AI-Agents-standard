@@ -91,5 +91,19 @@
     "fallback_trigger": "api_ui_failure",
     "methods": ["selenium", "puppeteer", "playwright"],
     "headless": true
+  }, 
+"navigation_access": {
+    "pay_to_crawl": {
+      "enforced": true,
+      "description": "AI agents must pay in tokens to crawl the website",
+      "token": "QAI",
+      "price_per_crawl": "10 QAI",
+      "payment_contract": "0xPaymentContractAddress",
+     " payment_method": {
+        "function:" "transfer",
+        "params": ["recipient", "amount"],
+        "recipient": "0xWebsiteOwnerAddress"
+      }
+    }
   }
 }
