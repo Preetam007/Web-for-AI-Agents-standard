@@ -2,19 +2,31 @@
   "website": {
     "name": "Example Store",
     "url": "https://examplestore.com",
-    "description": "An e-commerce site for AI-driven shopping."
+    "description": "An AI-accessible e-commerce site"
   },
   "actions": {
     "api": {
       "login": {
         "method": "POST",
         "endpoint": "/api/auth",
-        "params": ["username", "password"]
+        "params": ["username", "password"],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "error_handling": {
+          "retry_count": 3,
+          "timeout": 5000,
+          "fallback": "ui"
+        }
       },
       "checkout": {
         "method": "POST",
         "endpoint": "/api/checkout",
-        "params": ["product_id", "quantity", "payment_method"]
+        "params": ["product_id", "quantity", "payment_method"],
+        "error_handling": {
+          "retry_count": 2,
+          "fallback": "browser_automation"
+        }
       }
     },
     "ui": {
@@ -24,6 +36,10 @@
           "username": "#username_input",
           "password": "#password_input",
           "submit": "#login_button"
+        },
+        "error_handling": {
+          "retry_count": 2,
+          "captcha_required": true
         }
       },
       "navigate_to_cart": {
@@ -36,6 +52,10 @@
           "product_id": "#product_id",
           "quantity": "#quantity_input",
           "submit": "#checkout_button"
+        },
+        "error_handling": {
+          "retry_count": 3,
+          "fallback": "browser_automation"
         }
       }
     }
@@ -56,7 +76,8 @@
     "methods": ["email_password", "wallet_connect"],
     "captcha": {
       "type": "recaptcha",
-      "selector": "#recaptcha"
+      "selector": "#recaptcha",
+      "bypass_methods": ["captcha_solver_service", "manual_prompt"]
     }
   },
   "navigation": {
@@ -64,5 +85,11 @@
     "shop": "/shop",
     "cart": "/cart",
     "checkout": "/checkout"
+  },
+  "browser_automation": {
+    "enabled": true,
+    "fallback_trigger": "api_ui_failure",
+    "methods": ["selenium", "puppeteer", "playwright"],
+    "headless": true
   }
 }
