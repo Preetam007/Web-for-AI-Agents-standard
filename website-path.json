@@ -28,6 +28,11 @@
           "fallback": "ui"
         }
       },
+      "interaction_modes": {
+  "text_input": true,
+  "voice_commands": false,
+  "image_processing": true
+},
       "checkout": {
         "method": "POST",
         "endpoint": "/api/checkout",
@@ -69,18 +74,17 @@
       }
     }
   },
-  "crypto_payments": {
-    "enabled": true,
-    "supported_chains": ["Ethereum", "Solana", "Polygon"],
-    "addresses": {
-      "ETH": "0x123...",
-      "SOL": "SolanaAddress..."
+  "payments": {
+  "methods": ["crypto", "fiat", "reward points"],
+  "crypto_support": {
+    "tokens": ["ETH", "USDT", "MATIC"],
+    "pay_for_access": {
+      "price": "5 USDT",
+      "valid_for": "24 hours"
     },
-    "payment_methods": {
-      "onchain": true,
-      "offchain": false
-    }
-  },
+    "Address" "CA"
+  }
+},
   "authentication": {
     "methods": ["email_password", "wallet_connect"],
     "captcha": {
@@ -101,6 +105,36 @@
     "methods": ["selenium", "puppeteer", "playwright"],
     "headless": true
   }, 
+"agent_roles": {
+  "buyer": {
+    "allowed_actions": ["add_to_cart", "checkout"],
+    "restricted_actions": ["edit_product"]
+  },
+  "admin": {
+    "allowed_actions": ["edit_product", "view_sales"]
+  }
+},
+"status": {
+  "site_status": "active",
+  "alerts": ["Limited stock on some products", "API usage exceeded 80%"]
+},
+"decision_support": {
+  "token_diligence": {
+    "source": "QuillCheck",
+    "trust_score": 85,
+    "risk_factors": ["Centralized liquidity", "Admin privileges detected"]
+  },
+  "transaction_recommendations": {
+    "simulate_before_execution": true,
+    "preferred_networks": ["Ethereum", "Polygon"]
+  }
+},
+"ethical_guidelines": {
+  "data_collection": "only public data",
+  "gdpr_compliance": true,
+  "web3_transparency": true,
+  "ai_behavior_restrictions": ["no scraping of user profiles"]
+},
 "navigation_access": {
     "pay_to_crawl": {
       "enforced": true,
