@@ -4,6 +4,15 @@
     "url": "https://check.quillai.network/",
     "description": "A token diligence tool"
   },
+"navigation": {
+  "home": "/",
+  "products": "/products",
+  "checkout": "/checkout",
+  "priority": {
+    "important": ["/checkout", "/cart"],
+    "optional": ["/blog", "/faqs"]
+  }
+},
   "actions": {
     "api": {
       "login": {
