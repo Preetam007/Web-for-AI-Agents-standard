@@ -1,0 +1,56 @@
+{
+  "website": {
+    "name": "QuillCheck",
+    "url": "https://check.quillai.network/",
+    "description": "A DeFi due diligence tool offering risk assessments on tokens to protect against fraud."
+  },
+  "actions": {
+    "ui": {
+      "connect_wallet": {
+        "type": "click",
+        "selector": "button:contains('Connect Wallet')"
+      },
+      "select_chain": {
+        "type": "dropdown",
+        "selector": "#chain-selector",
+        "options": ["Ethereum", "Binance Smart Chain", "Polygon"]
+      },
+      "input_token_address": {
+        "type": "input",
+        "selector": "#token-address-input"
+      },
+      "check_token": {
+        "type": "click",
+        "selector": "button:contains('Check')"
+      },
+      "view_sample_report": {
+        "type": "click",
+        "selector": "a:contains('View Sample Report')"
+      }
+    },
+    "api": {
+      "get_token_information": {
+        "method": "GET",
+        "endpoint": "https://check-api.quillai.network/api/v1/tokens/information/{contractAddress}",
+        "headers": {
+          "x-api-key": "YOUR_API_KEY"
+        },
+        "params": {
+          "chainId": "1"  // Example: 1 for Ethereum Mainnet
+        },
+        "description": "Retrieve detailed information about a specific token."
+      }
+    }
+  },
+  "navigation": {
+    "home": "/",
+    "honeypot_explorer": "/honeypot-explorer",
+    "pro": "/pro",
+    "faqs": "/faqs",
+    "api_docs": "https://quillainetwork.gitbook.io/quillcheck"
+  },
+  "authentication": {
+    "methods": ["wallet_connect"],
+    "description": "Users can connect their cryptocurrency wallets to interact with the platform."
+  }
+}
